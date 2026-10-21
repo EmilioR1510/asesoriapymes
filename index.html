@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Asesoría Integral para la Primera Importación</title>
+<meta name="description" content="Diagnóstico de viabilidad, costeo de aterrizaje y acompañamiento de embarque para tu primera importación desde China, Estados Unidos o Corea del Sur.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#ffffff;
+    --bg-alt:#F7F6F3;
+    --text:#1a1a1a;
+    --text-muted:#5c5c5c;
+    --green:#1F6F5C;
+    --green-dark:#164F41;
+    --green-tint:#E9F2EF;
+    --orange:#E07A26;
+    --orange-tint:#FCEBDB;
+    --border:#E4E2DC;
+    --radius:14px;
+    --shadow:0 4px 20px rgba(26,26,26,0.06);
+    --max:1120px;
+  }
+
+  *,*::before,*::after{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',system-ui,-apple-system,sans-serif;
+    font-weight:400;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;}
+  h1,h2,h3,h4{font-weight:600;line-height:1.2;margin:0 0 .6em;}
+  p{margin:0 0 1em;}
+  ul{margin:0;padding:0;}
+  .container{max-width:var(--max);margin:0 auto;padding:0 24px;}
+  section{padding:88px 0;}
+  @media (max-width:640px){
+    section{padding:56px 0;}
+  }
+
+  .eyebrow{
+    display:inline-block;
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--green);
+    background:var(--green-tint);
+    padding:6px 14px;
+    border-radius:999px;
+    margin-bottom:18px;
+  }
+
+  .section-head{max-width:680px;margin:0 0 48px;}
+  .section-head h2{font-size:clamp(26px,3.4vw,36px);}
+  .section-head p{color:var(--text-muted);font-size:17px;}
+
+  /* reveal-on-scroll */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease;}
+  .reveal.visible{opacity:1;transform:translateY(0);}
+
+  /* ---------- Nav ---------- */
+  header.site-nav{
+    position:sticky;top:0;z-index:100;
+    background:rgba(255,255,255,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-inner{
+    max-width:var(--max);margin:0 auto;padding:16px 24px;
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+  }
+  .nav-logo{font-weight:700;font-size:16px;letter-spacing:-.01em;}
+  .nav-logo span{color:var(--green);}
+  .nav-links{display:flex;gap:28px;list-style:none;}
+  .nav-links a{font-size:14px;font-weight:500;text-decoration:none;color:var(--text);opacity:.75;transition:opacity .15s;}
+  .nav-links a:hover{opacity:1;}
+  .nav-cta{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--green);color:#fff;
+    padding:10px 18px;border-radius:8px;
+    font-size:14px;font-weight:600;text-decoration:none;
+    white-space:nowrap;
+    transition:background .15s;
+  }
+  .nav-cta:hover{background:var(--green-dark);}
+  @media (max-width:800px){ .nav-links{display:none;} }
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    padding:16px 30px;border-radius:10px;
+    font-size:16px;font-weight:600;text-decoration:none;
+    cursor:pointer;border:none;transition:background .15s, transform .1s;
+  }
+  .btn:active{transform:scale(.98);}
+  .btn-primary{background:var(--green);color:#fff;}
+  .btn-primary:hover{background:var(--green-dark);}
+  .btn-outline{background:transparent;color:var(--text);border:1.5px solid var(--border);}
+  .btn-outline:hover{border-color:var(--green);color:var(--green);}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding:96px 0 80px;
+    background:var(--bg-alt);
+    border-bottom:1px solid var(--border);
+  }
+  .hero-inner{max-width:760px;margin:0 auto;text-align:center;}
+  .hero h1{
+    font-size:clamp(32px,5.2vw,54px);
+    font-weight:700;
+    letter-spacing:-.02em;
+    margin-bottom:22px;
+  }
+  .hero h1 em{color:var(--green);font-style:normal;}
+  .hero .lead{
+    font-size:19px;color:var(--text-muted);
+    max-width:600px;margin:0 auto 36px;
+  }
+  .hero-actions{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;}
+  .hero-note{margin-top:18px;font-size:13px;color:var(--text-muted);}
+  .hero-badges{
+    display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:48px;
+  }
+  .hero-badge{
+    background:#fff;border:1px solid var(--border);border-radius:10px;
+    padding:14px 18px;font-size:13px;font-weight:500;color:var(--text-muted);
+    display:flex;align-items:center;gap:8px;
+  }
+  .hero-badge b{color:var(--orange);font-weight:700;}
+
+  /* ---------- Problem cards ---------- */
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  @media (max-width:860px){ .grid-3{grid-template-columns:1fr;} }
+
+  .card{
+    background:#fff;border:1px solid var(--border);border-radius:var(--radius);
+    padding:32px 28px;
+  }
+  .problem-card .icon{
+    width:48px;height:48px;border-radius:10px;
+    background:var(--orange-tint);
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:20px;
+  }
+  .problem-card h3{font-size:19px;margin-bottom:10px;}
+  .problem-card p{color:var(--text-muted);font-size:15px;margin:0;}
+
+  /* ---------- Timeline ---------- */
+  .timeline{
+    position:relative;
+    max-width:820px;margin:0 auto;
+  }
+  .timeline::before{
+    content:"";position:absolute;left:20px;top:6px;bottom:6px;width:2px;
+    background:var(--border);
+  }
+  @media (max-width:640px){ .timeline::before{left:16px;} }
+  .tl-item{
+    position:relative;padding-left:64px;margin-bottom:36px;
+  }
+  @media (max-width:640px){ .tl-item{padding-left:48px;} }
+  .tl-item:last-child{margin-bottom:0;}
+  .tl-dot{
+    position:absolute;left:11px;top:2px;width:20px;height:20px;border-radius:50%;
+    background:var(--green);border:4px solid var(--green-tint);
+  }
+  @media (max-width:640px){ .tl-dot{left:7px;} }
+  .tl-date{
+    font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+    color:var(--green);margin-bottom:6px;
+  }
+  .tl-item h4{font-size:17px;margin-bottom:6px;}
+  .tl-item p{color:var(--text-muted);font-size:15px;margin:0;}
+
+  .anchor-stat{
+    margin:56px auto 0;max-width:620px;text-align:center;
+    background:var(--green);color:#fff;
+    border-radius:var(--radius);padding:36px 28px;
+  }
+  .anchor-stat .big{
+    font-size:clamp(30px,5vw,44px);font-weight:800;letter-spacing:-.01em;
+    display:block;margin-bottom:6px;
+  }
+  .anchor-stat .big span{color:#F7C99A;}
+  .anchor-stat p{margin:0;opacity:.9;font-size:15px;}
+
+  /* ---------- Servicios / escalera ---------- */
+  .services{display:flex;flex-direction:column;gap:22px;}
+  .service-card{
+    background:#fff;border:1px solid var(--border);border-radius:var(--radius);
+    padding:32px;box-shadow:var(--shadow);
+    display:grid;grid-template-columns:auto 1fr auto;gap:28px;align-items:start;
+  }
+  @media (max-width:760px){
+    .service-card{grid-template-columns:1fr;gap:16px;}
+  }
+  .service-num{
+    width:42px;height:42px;border-radius:50%;
+    background:var(--green-tint);color:var(--green);
+    display:flex;align-items:center;justify-content:center;
+    font-weight:700;font-size:17px;flex-shrink:0;
+  }
+  .service-body h3{font-size:21px;margin-bottom:4px;}
+  .service-time{
+    display:inline-block;background:var(--orange-tint);color:var(--orange);
+    font-size:12px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;
+    padding:4px 10px;border-radius:999px;margin-bottom:14px;
+  }
+  .service-body ul{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:0;}
+  .service-body li{font-size:15px;color:var(--text-muted);padding-left:24px;position:relative;}
+  .service-body li::before{
+    content:"";position:absolute;left:0;top:7px;width:7px;height:7px;
+    border-radius:50%;background:var(--green);
+  }
+  .service-price{
+    text-align:right;white-space:nowrap;
+  }
+  @media (max-width:760px){ .service-price{text-align:left;} }
+  .service-price .label{font-size:12px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px;}
+  .service-price .amount{font-size:22px;font-weight:700;color:var(--green-dark);}
+
+  /* ---------- No hacemos ---------- */
+  .no-list{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  @media (max-width:860px){ .no-list{grid-template-columns:1fr;} }
+  .no-card{
+    border:1.5px dashed var(--border);border-radius:var(--radius);
+    padding:28px;background:var(--bg-alt);
+  }
+  .no-card .x-icon{
+    width:36px;height:36px;border-radius:50%;
+    background:#fff;border:1.5px solid var(--border);
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:16px;color:var(--text-muted);font-weight:700;
+  }
+  .no-card h3{font-size:17px;margin-bottom:8px;}
+  .no-card p{color:var(--text-muted);font-size:14.5px;margin:0;}
+
+  /* ---------- Para quien ---------- */
+  .fit-wrap{
+    background:var(--green-tint);border-radius:var(--radius);
+    padding:44px;display:grid;grid-template-columns:1fr 1fr;gap:16px 40px;
+  }
+  @media (max-width:760px){ .fit-wrap{grid-template-columns:1fr;padding:28px;} }
+  .fit-item{display:flex;gap:14px;align-items:flex-start;padding:14px 0;}
+  .fit-check{
+    flex-shrink:0;width:26px;height:26px;border-radius:50%;
+    background:var(--green);color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-size:14px;margin-top:1px;
+  }
+  .fit-item p{margin:0;font-size:15.5px;}
+
+  /* ---------- Stats ---------- */
+  .stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  @media (max-width:860px){ .stats-grid{grid-template-columns:1fr;} }
+  .stat-card{
+    text-align:center;padding:40px 24px;border-radius:var(--radius);
+    background:var(--bg-alt);border:1px solid var(--border);
+  }
+  .stat-card .num{
+    font-size:clamp(30px,4.4vw,42px);font-weight:800;color:var(--orange);
+    display:block;margin-bottom:10px;letter-spacing:-.01em;
+  }
+  .stat-card p{margin:0;font-size:14.5px;color:var(--text-muted);}
+
+  /* ---------- FAQ ---------- */
+  .faq{max-width:760px;margin:0 auto;}
+  .faq-item{border-bottom:1px solid var(--border);}
+  .faq-q{
+    width:100%;text-align:left;background:none;border:none;cursor:pointer;
+    display:flex;justify-content:space-between;align-items:center;gap:20px;
+    padding:22px 4px;font-size:16.5px;font-weight:600;color:var(--text);
+    font-family:inherit;
+  }
+  .faq-q .plus{
+    flex-shrink:0;width:26px;height:26px;border-radius:50%;
+    border:1.5px solid var(--border);position:relative;transition:transform .25s ease, border-color .25s ease;
+  }
+  .faq-q .plus::before,.faq-q .plus::after{
+    content:"";position:absolute;background:var(--green);
+    top:50%;left:50%;transform:translate(-50%,-50%);
+  }
+  .faq-q .plus::before{width:10px;height:2px;}
+  .faq-q .plus::after{width:2px;height:10px;transition:opacity .2s ease;}
+  .faq-item.open .plus{transform:rotate(180deg);border-color:var(--green);}
+  .faq-item.open .plus::after{opacity:0;}
+  .faq-a{
+    max-height:0;overflow:hidden;transition:max-height .3s ease;
+  }
+  .faq-a-inner{padding:0 4px 22px;color:var(--text-muted);font-size:15.5px;max-width:660px;}
+
+  /* ---------- CTA final ---------- */
+  .cta-final{
+    background:var(--green-dark);color:#fff;text-align:center;
+    border-radius:var(--radius);padding:64px 32px;
+    max-width:var(--max);margin:0 auto;
+  }
+  .cta-final h2{color:#fff;font-size:clamp(24px,3.6vw,34px);}
+  .cta-final p{color:rgba(255,255,255,.82);font-size:17px;max-width:520px;margin:0 auto 32px;}
+  .cta-final .btn-primary{background:#fff;color:var(--green-dark);}
+  .cta-final .btn-primary:hover{background:#F0EFEA;}
+
+  /* ---------- Footer ---------- */
+  footer{
+    background:var(--bg-alt);border-top:1px solid var(--border);
+    padding:52px 0 32px;
+  }
+  .footer-top{
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:32px;
+    margin-bottom:32px;
+  }
+  .footer-brand{font-weight:700;font-size:17px;margin-bottom:8px;}
+  .footer-brand span{color:var(--green);}
+  .footer-links{display:flex;gap:28px;flex-wrap:wrap;list-style:none;}
+  .footer-links a{font-size:14px;text-decoration:none;color:var(--text-muted);}
+  .footer-links a:hover{color:var(--green);}
+  .footer-disclaimer{
+    border-top:1px solid var(--border);padding-top:24px;
+    font-size:13px;color:var(--text-muted);line-height:1.7;
+  }
+  .footer-disclaimer strong{color:var(--text);}
+
+  /* ---------- Floating contact button ---------- */
+  .wa-float{
+    position:fixed;bottom:22px;right:22px;z-index:200;
+    width:58px;height:58px;border-radius:50%;
+    background:var(--green);color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 6px 18px rgba(31,111,92,.35);
+    text-decoration:none;
+    transition:transform .15s ease, background .15s ease;
+  }
+  .wa-float:hover{transform:scale(1.06);background:var(--green-dark);}
+
+  .section-alt{background:var(--bg-alt);}
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <div class="nav-logo">Asesoría <span>Primera Importación</span></div>
+    <ul class="nav-links">
+      <li><a href="#problema">El problema</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#para-quien">Para quién es</a></li>
+      <li><a href="#faq">Preguntas</a></li>
+    </ul>
+    <a class="nav-cta" href="mailto:emilio.reyesde@anahuac.mx?subject=Llamada%20gratuita%20de%2015%20minutos&amp;body=Hola%2C%20quiero%20agendar%20mi%20llamada%20gratuita%20de%2015%20minutos.">Agendar llamada</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hero-inner">
+    <span class="eyebrow">Diagnóstico · Costeo · Acompañamiento</span>
+    <h1>¿Vas a importar por primera vez? <em>No lo hagas a ciegas.</em></h1>
+    <p class="lead">Te decimos si tu producto se puede importar, cuánto te va a costar realmente puesto en tu bodega, y te acompañamos durante el embarque para que no se quede detenido en aduana.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="mailto:emilio.reyesde@anahuac.mx?subject=Llamada%20gratuita%20de%2015%20minutos&amp;body=Hola%2C%20quiero%20agendar%20mi%20llamada%20gratuita%20de%2015%20minutos.">
+        Agenda tu llamada gratuita de 15 min
+      </a>
+      <a class="btn btn-outline" href="#servicios">Ver servicios y precios</a>
+    </div>
+    <p class="hero-note">Sin compromiso. Sin suscripción. Trabajamos por proyecto.</p>
+
+    <div class="hero-badges">
+      <div class="hero-badge"><b>1,463</b> fracciones arancelarias modificadas en 2026</div>
+      <div class="hero-badge">Arancel promedio: <b>10% → 35%</b></div>
+      <div class="hero-badge">Tasa simplificada: <b>33.5%</b></div>
+    </div>
+  </div>
+</section>
+
+<section id="problema">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">El problema</span>
+      <h2>Importar sin preparación sale caro</h2>
+      <p>La mayoría de las importaciones fallidas de primera vez no fallan por mala suerte. Fallan porque nadie hizo estas tres preguntas antes de pagar el primer depósito.</p>
+    </div>
+    <div class="grid-3">
+      <div class="card problem-card reveal">
+        <div class="icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E07A26" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <h3>No sabes cuánto te va a costar realmente</h3>
+        <p>El precio del proveedor no es el costo de tu producto. Falta el arancel, el IVA, el DTA, el flete, el seguro, los honorarios del agente aduanal y la última milla. Sin ese número, cotizas a ciegas.</p>
+      </div>
+      <div class="card problem-card reveal">
+        <div class="icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E07A26" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+        </div>
+        <h3>Tu mercancía puede quedarse en aduana</h3>
+        <p>Normas Oficiales Mexicanas, permisos de COFEPRIS, etiquetado incorrecto. Si tu producto los requiere y no los tienes listos antes de embarcar, tu contenedor se queda detenido y los costos de almacenaje corren en tu contra.</p>
+      </div>
+      <div class="card problem-card reveal">
+        <div class="icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E07A26" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        </div>
+        <h3>No puedes saber si te están cobrando bien</h3>
+        <p>El agente aduanal y el forwarder manejan información que tú no tienes. Sin alguien de tu lado que entienda el proceso, no hay forma de saber si un cobro es justo o si te están inflando el expediente.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="regulacion" class="section-alt">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Lo que cambió en 2026</span>
+      <h2>Las reglas del juego ya no son las de hace un año</h2>
+      <p>Si tu cálculo de rentabilidad lo hiciste antes de 2026, está obsoleto. Esto es lo que pasó.</p>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item reveal">
+        <span class="tl-dot"></span>
+        <div class="tl-date">Enero 2025</div>
+        <h4>Reglas Generales de Comercio Exterior (RGCE)</h4>
+        <p>Se endurecen los requisitos de información y documentación para el despacho aduanero, elevando el estándar de precisión exigido en cada pedimento.</p>
+      </div>
+      <div class="tl-item reveal">
+        <span class="tl-dot"></span>
+        <div class="tl-date">Agosto 2025</div>
+        <h4>La tasa simplificada sube a 33.5%</h4>
+        <p>La tasa global aplicable al procedimiento simplificado de mensajería pasa de 19% a 33.5%, encareciendo de golpe los envíos de paquetería que antes eran la puerta de entrada más barata.</p>
+      </div>
+      <div class="tl-item reveal">
+        <span class="tl-dot"></span>
+        <div class="tl-date">Noviembre 2025</div>
+        <h4>Reforma a la Ley Aduanera</h4>
+        <p>Se refuerzan las facultades de verificación y las sanciones por errores u omisiones en la información declarada ante la autoridad aduanera.</p>
+      </div>
+      <div class="tl-item reveal">
+        <span class="tl-dot"></span>
+        <div class="tl-date">Enero 2026</div>
+        <h4>Decreto TIGIE: 1,463 fracciones modificadas</h4>
+        <p>Entra en vigor la reforma que modifica 1,463 fracciones arancelarias, con tasas de 5% a 50% para países sin tratado de libre comercio con México, incluyendo China, Corea del Sur e India.</p>
+      </div>
+    </div>
+
+    <div class="anchor-stat reveal">
+      <span class="big">El arancel promedio pasó de <span>10% a 35%</span></span>
+      <p>para productos importados de países sin TLC con México.</p>
+    </div>
+  </div>
+</section>
+
+<section id="servicios">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Cómo te ayudamos</span>
+      <h2>Tres entregables, sin letra chiquita</h2>
+      <p>Cada servicio es independiente. Contratas lo que necesitas según en qué etapa estés de tu proyecto de importación.</p>
+    </div>
+
+    <div class="services">
+      <div class="service-card reveal">
+        <div class="service-num">1</div>
+        <div class="service-body">
+          <span class="service-time">Entrega: 3 a 5 días hábiles</span>
+          <h3>Diagnóstico de viabilidad</h3>
+          <ul>
+            <li>Clasificación arancelaria de tu producto (fracción TIGIE)</li>
+            <li>Identificación de NOM aplicables</li>
+            <li>Identificación de permisos COFEPRIS, si aplica</li>
+            <li>Veredicto claro: se puede importar o no, y bajo qué condiciones</li>
+          </ul>
+        </div>
+        <div class="service-price">
+          <div class="label">Inversión</div>
+          <div class="amount">$1,500 – $2,500 MXN</div>
+        </div>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-num">2</div>
+        <div class="service-body">
+          <span class="service-time">Entrega: 5 a 7 días hábiles</span>
+          <h3>Costeo de aterrizaje</h3>
+          <ul>
+            <li>Costo real por unidad puesta en tu bodega</li>
+            <li>Arancel, IVA y DTA calculados con la fracción correcta</li>
+            <li>Flete internacional y seguro de la carga</li>
+            <li>Honorarios del agente aduanal, maniobras y última milla</li>
+          </ul>
+        </div>
+        <div class="service-price">
+          <div class="label">Inversión</div>
+          <div class="amount">$4,000 – $6,000 MXN</div>
+        </div>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-num">3</div>
+        <div class="service-body">
+          <span class="service-time">Entrega: hasta cierre de embarque</span>
+          <h3>Acompañamiento de embarque</h3>
+          <ul>
+            <li>Revisión de factura comercial y packing list antes de embarcar</li>
+            <li>Conexión directa con agente aduanal y freight forwarder aliados</li>
+            <li>Seguimiento del despacho completo, de origen a tu bodega</li>
+            <li>Resolución de banderas rojas antes de que se conviertan en detención</li>
+          </ul>
+        </div>
+        <div class="service-price">
+          <div class="label">Inversión</div>
+          <div class="amount">$8,000 – $15,000 MXN</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="no-hacemos" class="section-alt">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Transparencia</span>
+      <h2>Lo que NO hacemos</h2>
+      <p>Preferimos que sepas exactamente qué compras. Esto está fuera del servicio, a propósito.</p>
+    </div>
+    <div class="no-list">
+      <div class="no-card reveal">
+        <div class="x-icon">✕</div>
+        <h3>No despachamos en aduana</h3>
+        <p>El despacho aduanero requiere patente del SAT. Eso lo hace el agente aduanal aliado, no nosotros. Nuestro trabajo es que llegues a él preparado.</p>
+      </div>
+      <div class="no-card reveal">
+        <div class="x-icon">✕</div>
+        <h3>No tocamos tu dinero</h3>
+        <p>Tú pagas directo al agente aduanal y al freight forwarder. Nunca transferimos fondos, ni recibimos pagos a cuenta de terceros.</p>
+      </div>
+      <div class="no-card reveal">
+        <div class="x-icon">✕</div>
+        <h3>No garantizamos resultado</h3>
+        <p>Vendemos acompañamiento y criterio experto, no magia. Reducimos el riesgo de forma importante; no lo eliminamos, porque nadie honesto puede prometer eso.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="para-quien">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Para quién es este servicio</span>
+      <h2>¿Te identificas con esto?</h2>
+    </div>
+    <div class="fit-wrap reveal">
+      <div class="fit-item">
+        <span class="fit-check">✓</span>
+        <p>Vendes en Amazon México, Mercado Libre o TikTok Shop</p>
+      </div>
+      <div class="fit-item">
+        <span class="fit-check">✓</span>
+        <p>Hoy compras a un intermediario nacional y sabes que estás pagando de más</p>
+      </div>
+      <div class="fit-item">
+        <span class="fit-check">✓</span>
+        <p>Quieres importar directo desde origen para mejorar tu margen</p>
+      </div>
+      <div class="fit-item">
+        <span class="fit-check">✓</span>
+        <p>Nunca has hecho una importación formal por tu cuenta</p>
+      </div>
+      <div class="fit-item">
+        <span class="fit-check">✓</span>
+        <p>Tu ticket de importación estimado va de $30,000 a $200,000 MXN</p>
+      </div>
+      <div class="fit-item">
+        <span class="fit-check">✓</span>
+        <p>Prefieres invertir en asesoría antes de arriesgar un contenedor completo</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="datos" class="section-alt">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">El contexto</span>
+      <h2>Los números que cambiaron el juego</h2>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card reveal">
+        <span class="num">1,463</span>
+        <p>fracciones arancelarias modificadas por el decreto TIGIE de enero de 2026</p>
+      </div>
+      <div class="stat-card reveal">
+        <span class="num">$53,500&nbsp;–&nbsp;$106,970</span>
+        <p>de multa en pesos mexicanos por datos inexactos en el pedimento</p>
+      </div>
+      <div class="stat-card reveal">
+        <span class="num">33.5%</span>
+        <p>tasa global vigente en el procedimiento simplificado de mensajería</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Preguntas frecuentes</span>
+      <h2>Lo que más nos preguntan</h2>
+    </div>
+    <div class="faq reveal">
+
+      <div class="faq-item">
+        <button class="faq-q">¿Necesito estar en el Padrón de Importadores?
+          <span class="plus"></span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          Sí, para importar formalmente necesitas estar inscrito en el Padrón de Importadores del SAT. Hoy solo 130,000 de los 77 millones de compradores digitales en México están inscritos, así que es probable que tú tampoco lo estés todavía. Te orientamos sobre el trámite como parte del acompañamiento.
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">¿Cuánto tarda una importación de China?
+          <span class="plus"></span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          Depende del modo de transporte y del producto, pero como referencia general: producción con el proveedor de 15 a 30 días, tránsito marítimo de 25 a 40 días o aéreo de 5 a 10 días, más el despacho aduanero en México. En total, entre 5 y 10 semanas puerta a puerta es un rango razonable para planear.
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">¿Me conviene importar o seguir comprando a intermediario?
+          <span class="plus"></span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          Depende de tu volumen y tu margen actual. El costeo de aterrizaje existe exactamente para responder esta pregunta con números reales, no con estimaciones. En muchos casos, con la reforma arancelaria de 2026, la diferencia se redujo frente a lo que era hace un año, y vale la pena confirmarlo antes de comprometer capital.
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">¿Qué pasa si mi producto necesita permiso de COFEPRIS?
+          <span class="plus"></span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          Si tu producto cae en categorías reguladas por COFEPRIS (ciertos cosméticos, suplementos, dispositivos médicos, entre otros), necesitas el permiso o aviso correspondiente antes de que la mercancía pueda despacharse. Lo identificamos en el diagnóstico de viabilidad para que sepas desde el inicio si aplica y qué implica en tiempo y costo.
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">¿Por qué no cobran suscripción mensual?
+          <span class="plus"></span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          Porque no tendría sentido para ti. La mayoría de nuestros clientes importa entre 2 y 3 veces al año, no todos los meses. Cobramos por proyecto entregado, no por permanencia.
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">¿Puedo importar como persona física?
+          <span class="plus"></span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          Sí, siempre que tengas actividad empresarial dada de alta ante el SAT y cumplas con el registro correspondiente, incluyendo el Padrón de Importadores. Es exactamente el perfil con el que más trabajamos: personas físicas con negocio que venden en marketplaces y quieren dar el salto a importar directo.
+        </div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="cta-final">
+  <div class="container">
+    <div class="cta-final reveal">
+      <h2>¿Listo para dejar de importar a ciegas?</h2>
+      <p>Agenda una llamada gratuita de 15 minutos. Sin compromiso, para entender tu caso y decirte por dónde empezar.</p>
+      <a class="btn btn-primary" href="mailto:emilio.reyesde@anahuac.mx?subject=Llamada%20gratuita%20de%2015%20minutos&amp;body=Hola%2C%20quiero%20agendar%20mi%20llamada%20gratuita%20de%2015%20minutos.">
+        Agenda tu llamada gratuita por correo
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">Asesoría <span>Primera Importación</span></div>
+        <p style="color:var(--text-muted);font-size:14px;margin:0;max-width:360px;">Diagnóstico, costeo y acompañamiento para tu primera importación desde China, Estados Unidos o Corea del Sur.</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="mailto:emilio.reyesde@anahuac.mx">emilio.reyesde@anahuac.mx</a></li>
+        <li><a href="#aviso-privacidad">Aviso de privacidad</a></li>
+      </ul>
+    </div>
+    <div class="footer-disclaimer">
+      <strong>No somos agentes aduanales.</strong> Operamos exclusivamente en los eslabones que no requieren patente del SAT: diagnóstico, costeo y acompañamiento. El despacho aduanero es realizado por agentes aduanales aliados, titulares de patente vigente ante el SAT. No manejamos carga ni recibimos fondos de terceros.
+      <br><br>
+      © 2026 Asesoría Integral para la Primera Importación. Todos los derechos reservados.
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" href="mailto:emilio.reyesde@anahuac.mx?subject=Llamada%20gratuita%20de%2015%20minutos&amp;body=Hola%2C%20quiero%20agendar%20mi%20llamada%20gratuita%20de%2015%20minutos." aria-label="Escribir por correo">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 7 12 13 21 7"/></svg>
+</a>
+
+<script>
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(function(item){
+    var q = item.querySelector('.faq-q');
+    var a = item.querySelector('.faq-a');
+    q.addEventListener('click', function(){
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function(other){
+        if(other !== item){
+          other.classList.remove('open');
+          other.querySelector('.faq-a').style.maxHeight = null;
+        }
+      });
+      if(isOpen){
+        item.classList.remove('open');
+        a.style.maxHeight = null;
+      } else {
+        item.classList.add('open');
+        a.style.maxHeight = a.scrollHeight + 'px';
+      }
+    });
+  });
+
+  // Scroll reveal
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(function(el){
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
